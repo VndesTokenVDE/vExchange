@@ -7,16 +7,11 @@ const Exchange = () => {
   const [Success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [orderId, setorderId] = useState(false);
-  const [totalAmount, setTotalAmount] = useState('0');
+  const [totalAmount, setTotalAmount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [paymentAccount, setPaymentAccount] = useState('');
 
   const createOrder = (data, actions) => {
-    var _amount = parseInt(totalAmount);
-    console.log(totalAmount);
-    console.log('Passed');
-    console.log('Amount: ' + _amount);
-    if (isNaN(_amount)) return;
     return actions.order.create({
       purchase_units: [
         {
@@ -47,8 +42,14 @@ const Exchange = () => {
     setErrorMessage('An error occured with your payment');    
   }
 
-  const updateAmount = (val) => {
-    setTotalAmount(val);
+  const updateAmount = (event) => {
+    console.log(event.taget.value);
+
+    var _amount = parseInt(event.target.value);
+    console.log(_amount);
+    
+    var _c = isNaN(_amount) ? 0 : _amount;
+    setTotalAmount(_c);
   }
 
   return (
@@ -68,8 +69,8 @@ const Exchange = () => {
             </label>
             <label className='mt-2'>
               Amount you want to exchange:
-              <input type="text" className={styles.inputField}
-                onChange={ (e) => setTotalAmount(e.target.value) }
+              <input type="text" className={styles.inputField} placeholder="0"
+                onChange={ (e) => updateAmount }
               />
             </label>
             <PayPalScriptProvider
