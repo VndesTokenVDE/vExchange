@@ -13,27 +13,26 @@ const Exchange = () => {
 
   const createOrder = (data, actions) => {
     var _amount = parseInt(totalAmount);
-    if (!isNaN(_amount)) {
-      return actions.order.create({
-        purchase_units: [
-          {
-            description: 'Friends and Family',
-            amount: {
-              currency_code: 'USD',
-              value: parseInt(totalAmount)
-            },
+    console.log('Passed');
+    console.log('Amount: ' + _amount);
+    if (isNaN(_amount)) return;
+    return actions.order.create({
+      purchase_units: [
+        {
+          description: 'Friends and Family',
+          amount: {
+            currency_code: 'USD',
+            value: parseInt(totalAmount)
           },
-        ],
-        application_context: {
-          shipping_preference: 'NO_SHIPPING'
-        }
-      }).then((orderID) => {
-        setorderId(orderID);
-        return orderID;
-      })
-    } else {
-      return null;
-    }
+        },
+      ],
+      application_context: {
+        shipping_preference: 'NO_SHIPPING'
+      }
+    }).then((orderID) => {
+      setorderId(orderID);
+      return orderID;
+    })
   }
 
   const onApprove = (data, actions) => {
