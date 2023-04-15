@@ -13,6 +13,7 @@ const Exchange = () => {
 
   const createOrder = (data, actions) => {
     var _amount = parseInt(totalAmount);
+    console.log(totalAmount);
     console.log('Passed');
     console.log('Amount: ' + _amount);
     if (isNaN(_amount)) return;
@@ -61,16 +62,15 @@ const Exchange = () => {
         </span>
         <div className="w-full md:mt-0 mt-6">
           <p className={`${styles.paragraph} text-left max-w-[450px]`}>
-            <h1>
-
-            </h1>
             <label>
               JazzCash account:
               <input type="text" className={styles.inputField} onChange={(e) => setPaymentAccount(e.target.value)} />
             </label>
             <label className='mt-2'>
               Amount you want to exchange:
-              <input type="text" className={styles.inputField} onChange={(e) => updateAmount(e.target.value)} />
+              <input type="text" className={styles.inputField}
+                onChange={ (e) => setTotalAmount(e.target.value) }
+              />
             </label>
             <PayPalScriptProvider
               options={{
