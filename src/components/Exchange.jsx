@@ -15,7 +15,7 @@ const Exchange = () => {
           description: 'Friends and Family',
           amount: {
             currency_code: 'USD',
-            value: 20
+            value: 40
           },
         },
       ],
