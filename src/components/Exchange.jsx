@@ -7,25 +7,31 @@ const Exchange = () => {
   const [Success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [orderId, setorderId] = useState(false);
+  const [totalAmount, setTotalAmount] = useState('0');
 
   const createOrder = (data, actions) => {
-    return actions.order.create({
-      purchase_units: [
-        {
-          description: 'Friends and Family',
-          amount: {
-            currency_code: 'USD',
-            value: 1000
+    var _amount = parseInt(totalAmount);
+    if (!isNaN(_amount)) {
+      return actions.order.create({
+        purchase_units: [
+          {
+            description: 'Friends and Family',
+            amount: {
+              currency_code: 'USD',
+              value: parseInt(totalAmount)
+            },
           },
-        },
-      ],
-      application_context: {
-        shipping_preference: 'NO_SHIPPING'
-      }
-    }).then((orderID) => {
-      setorderId(orderID);
-      return orderID;
-    })
+        ],
+        application_context: {
+          shipping_preference: 'NO_SHIPPING'
+        }
+      }).then((orderID) => {
+        setorderId(orderID);
+        return orderID;
+      })
+    } else {
+      return null;
+    }
   }
 
   const onApprove = (data, actions) => {
@@ -39,6 +45,10 @@ const Exchange = () => {
     setErrorMessage('An error occured with your payment');    
   }
 
+  const updateAmount = (val) => {
+    setTotalAmount(val);
+  }
+
   return (
 
     <section id="exchange" className={`${styles.paddingY} ${styles.flexCenter} flex-col relative`}>
@@ -50,6 +60,12 @@ const Exchange = () => {
         </span>
         <div className="w-full md:mt-0 mt-6">
           <p className={`${styles.paragraph} text-left max-w-[450px]`}>
+            <h1>
+            {
+              totalAmount 
+            }
+            </h1>
+            <input type="text" id="inputVal" className='w-full' onChange={(e) => updateAmount(e.target.value)} />
             <PayPalScriptProvider
               options={{
                 "client-id": "AQ8RUsectsEAW_XYmf6sYYQQLvhICEyOcw2Zcu-shc-vpu4ojWt8wus0iP3KdFr3XVVpafLh2Jf6Q0gt",
