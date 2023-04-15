@@ -8,6 +8,8 @@ const Exchange = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [orderId, setorderId] = useState(false);
   const [totalAmount, setTotalAmount] = useState('0');
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [paymentAccount, setPaymentAccount] = useState('');
 
   const createOrder = (data, actions) => {
     var _amount = parseInt(totalAmount);
@@ -61,11 +63,16 @@ const Exchange = () => {
         <div className="w-full md:mt-0 mt-6">
           <p className={`${styles.paragraph} text-left max-w-[450px]`}>
             <h1>
-            {
-              totalAmount 
-            }
+
             </h1>
-            <input type="text" id="inputVal" className='w-full' onChange={(e) => updateAmount(e.target.value)} />
+            <label>
+              JazzCash account:
+              <input type="text" className={styles.inputField} onChange={(e) => setPaymentAccount(e.target.value)} />
+            </label>
+            <label className='mt-2'>
+              Amount you want to exchange:
+              <input type="text" className={styles.inputField} onChange={(e) => updateAmount(e.target.value)} />
+            </label>
             <PayPalScriptProvider
               options={{
                 "client-id": "AQ8RUsectsEAW_XYmf6sYYQQLvhICEyOcw2Zcu-shc-vpu4ojWt8wus0iP3KdFr3XVVpafLh2Jf6Q0gt",
