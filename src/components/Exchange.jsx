@@ -1,15 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../style';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { CURRENCY } from '../tool/USDPKR';
+
+let over_amount = 0;
 
 const Exchange = () => {
   const [Show, setShow] = useState(false);
   const [Success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [orderId, setorderId] = useState(false);
-  const [totalAmount, setTotalAmount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [paymentAccount, setPaymentAccount] = useState('');
+
+  const [initialValue, setinitialValue] = useState(0);
+  const [userDetails, setUserDetails] = useState({
+    email: "",
+    paymentMethod: "JazzCash",
+    USD: "",
+    PKR: ""
+  });
 
   const createOrder = (data, actions) => {
     return actions.order.create({
@@ -18,7 +28,7 @@ const Exchange = () => {
           description: 'Friends and Family',
           amount: {
             currency_code: 'USD',
-            value: parseInt(totalAmount)
+            value: over_amount
           },
         },
       ],
@@ -42,10 +52,30 @@ const Exchange = () => {
     setErrorMessage('An error occured with your payment');    
   }
 
+  useEffect(() => {
+    over_amount = initialValue;
+  }, [initialValue])
+
   const updateAmount = (event) => {
     var _amount = parseInt(event.target.value);
     var _c = isNaN(_amount) ? 0 : _amount;
-    setTotalAmount(_c);
+    setinitialValue(_c);
+
+    var totalPKR = parseInt(_amount * CURRENCY.USDPKR);
+    setInsideState("PKR", totalPKR);
+    setInsideState("USD", _amount);
+  }
+
+  const updateUserInfo = (event) => {
+    const { value, name } = event.target;
+    setInsideState(name, value);
+  }
+
+  const setInsideState = (_name, _value) => {
+    setUserDetails((prev) => {
+      return { ...prev, [_name]: _value }
+    });
+    console.info(userDetails);
   }
 
   return (
@@ -55,15 +85,42 @@ const Exchange = () => {
         <span className={styles.heading2}>
           <h1 className={styles.heading2}>Dollar Exchange</h1>
           <p className={styles.paragraph}>Exchange USD with PKR</p>
+          <p className={`${styles.paragraph} mt-2`}>Note: Please fill all the information accordingly to keep track of your order.</p>
         </span>
         <div className="w-full md:mt-0 mt-6">
           <p className={`${styles.paragraph} text-left max-w-[450px]`}>
+            
             <label className='mt-2'>
-              Amount you want to exchange:
-              <input type="text" className={styles.inputField} placeholder="0"
+              Amount you want to exchange: <span className='text-secondary'>{ parseInt(initialValue * CURRENCY.USDPKR) } PKR</span>
+              <input type="text"
+                className={styles.inputField} 
                 onChange={ (e) => updateAmount(e) }
+                value={initialValue}
               />
             </label>
+            
+            <label className='mt-2'>
+              Payment Processor:
+              <select name='paymentMethod'
+                className={styles.inputField}
+                onChange={updateUserInfo}
+                value={userDetails.paymentMethod}
+              >
+                <option value="JazzCash">JazzCash</option>
+                <option value="Easypaisa">EasyPaisa</option>
+              </select>
+            </label>
+            
+            <label className='mt-2'>
+              Email: 
+              <input type="text"
+                className={styles.inputField} 
+                name="email"
+                onChange={updateUserInfo}
+                placeholder='something@something.com'
+              />
+            </label>
+            
             <PayPalScriptProvider
               options={{
                 "client-id": "AQ8RUsectsEAW_XYmf6sYYQQLvhICEyOcw2Zcu-shc-vpu4ojWt8wus0iP3KdFr3XVVpafLh2Jf6Q0gt",
