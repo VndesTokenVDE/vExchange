@@ -5,25 +5,7 @@ import { CURRENCY } from '../tool/USDPKR';
 
 let over_amount = 0;
 
-/*
-Up to $3,000 USD
 
-$3,000.01 USD - $10,000.00 USD
-
-$10,000.01 USD - $100,000.00 USD
-
-Above $100,000.01 USD
-International Customers(per transaction)
-
-4.4% + Fixed Fee
-
-3.9% + Fixed Fee
-
-3.7% + Fixed Fee
-
-3.4% + Fixed Fee
-
-*/
 const Exchange = () => {
   const [Show, setShow] = useState(false);
   const [Success, setSuccess] = useState(false);
@@ -39,6 +21,39 @@ const Exchange = () => {
     USD: "",
     PKR: ""
   });
+
+  const returnGross = (inputVal) => {
+    let fee = 4.4;
+    if (inputVal > 3000 && inputVal <= 10000) {
+      fee = 3.9; 
+    } else if (inputVal > 10000 && inputVal <= 100000) {
+      fee = 3.7;
+    } else if (inputVal > 100000) {
+      fee = 3.4;
+    }
+
+    var overallfee = (inputVal / 100) * fee;
+    var grossDollars = inputVal - (overallfee);
+
+    var totalPKR = parseInt(grossDollars * CURRENCY.USDPKR);
+    
+
+    var _tax = inputVal * CURRENCY.TAX;
+    var grossPKR = totalPKR - _tax;
+
+    if (inputVal === 0) {
+      grossPKR = 0;
+      grossDollars = 0;
+    }
+
+    
+    var rVal = {
+      _fee: fee,
+      PKR: grossPKR,
+      USD: grossDollars
+    }
+    return rVal;
+  }
 
   const createOrder = (data, actions) => {
     return actions.order.create({
@@ -78,11 +93,13 @@ const Exchange = () => {
   const updateAmount = (event) => {
     var _amount = parseInt(event.target.value);
     var _c = isNaN(_amount) ? 0 : _amount;
+    
+    var _gross = returnGross(_c);
     setinitialValue(_c);
-
-    var totalPKR = parseInt(_amount * CURRENCY.USDPKR);
-    setInsideState("PKR", totalPKR);
-    setInsideState("USD", _amount);
+    
+    
+    setInsideState("PKR", _gross.PKR);
+    setInsideState("USD", _gross.USD);
   }
 
   const updateUserInfo = (event) => {
@@ -105,12 +122,13 @@ const Exchange = () => {
           <h1 className={styles.heading2}>Dollar Exchange</h1>
           <p className={styles.paragraph}>Exchange USD with PKR</p>
           <p className={`${styles.paragraph} mt-2`}>Note: Please fill all the information accordingly to keep track of your order.</p>
+          <p className={`${styles.paragraph} mt-2`}>Transaction Fee (PayPal): <b>4.4%</b>.</p>
         </span>
         <div className="w-full md:mt-0 mt-6">
           <p className={`${styles.paragraph} text-left max-w-[450px]`}>
             
             <label className='mt-2'>
-              Amount you want to exchange: <span className='text-secondary'>{ parseInt(initialValue * CURRENCY.USDPKR) } PKR</span>
+              Amount you want to exchange: <span className='text-secondary'>{ userDetails.PKR } PKR</span>
               <input type="text"
                 className={styles.inputField} 
                 onChange={ (e) => updateAmount(e) }
@@ -131,12 +149,12 @@ const Exchange = () => {
             </label>
             
             <label className='mt-2'>
-              Email: 
+              Account Detail: 
               <input type="text"
                 className={styles.inputField} 
                 name="email"
                 onChange={updateUserInfo}
-                placeholder='something@something.com'
+                placeholder='03xx-xxxxxxx'
               />
             </label>
             

@@ -23,7 +23,7 @@ const Billing = () => {
       <p className={styles.paragraph}>
         <div className="h-[60px] w-[100%] grid grid-cols-2 gap-2 content-center mt-4">
           <input type="text" className={styles.inputField} onChange={queryEmail} placeholder='something@something.com' />
-          <Button text="Track" onClick={Track()} />
+          <Button text="Track" onClick={Track} />
         </div>
       </p>
     )
@@ -31,7 +31,6 @@ const Billing = () => {
 
   const Track = () => {
     setShowTrack(true);
-    console.log('Clicked');
   }
 
   return (
