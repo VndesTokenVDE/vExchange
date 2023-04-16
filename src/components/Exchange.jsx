@@ -5,6 +5,25 @@ import { CURRENCY } from '../tool/USDPKR';
 
 let over_amount = 0;
 
+/*
+Up to $3,000 USD
+
+$3,000.01 USD - $10,000.00 USD
+
+$10,000.01 USD - $100,000.00 USD
+
+Above $100,000.01 USD
+International Customers(per transaction)
+
+4.4% + Fixed Fee
+
+3.9% + Fixed Fee
+
+3.7% + Fixed Fee
+
+3.4% + Fixed Fee
+
+*/
 const Exchange = () => {
   const [Show, setShow] = useState(false);
   const [Success, setSuccess] = useState(false);
