@@ -2,11 +2,21 @@ import React, { useState, useEffect } from 'react'
 import styles from '../style';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { CURRENCY } from '../tool/USDPKR';
+import axios from 'axios';
 
 let over_amount = 0;
+let USDPKR = 0;
 
+axios.get('http://localhost:3000/exchangerate')
+.then(response => {
+  console.log(response.data);
+  USDPKR = response.data;
+}).catch(err => {
+  console.log("Unable");
+});
 
 const Exchange = () => {
+
   const [Show, setShow] = useState(false);
   const [Success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -19,7 +29,7 @@ const Exchange = () => {
     email: "",
     paymentMethod: "JazzCash",
     USD: "",
-    PKR: ""
+    PKR: "0"
   });
 
   const returnGross = (inputVal) => {
@@ -33,9 +43,10 @@ const Exchange = () => {
     }
 
     var overallfee = (inputVal / 100) * fee;
-    var grossDollars = inputVal - (overallfee);
+    var grossDollars = inputVal - overallfee;
 
-    var totalPKR = parseInt(grossDollars * CURRENCY.USDPKR);
+    //var totalPKR = parseInt(grossDollars * CURRENCY.USDPKR);
+    var totalPKR = parseInt(grossDollars * USDPKR);
     
 
     var _tax = inputVal * CURRENCY.TAX;
@@ -157,7 +168,6 @@ const Exchange = () => {
                 placeholder='03xx-xxxxxxx'
               />
             </label>
-            
             <PayPalScriptProvider
               options={{
                 "client-id": "AQ8RUsectsEAW_XYmf6sYYQQLvhICEyOcw2Zcu-shc-vpu4ojWt8wus0iP3KdFr3XVVpafLh2Jf6Q0gt",

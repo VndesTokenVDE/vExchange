@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import { apple, bill, google } from '../assets';
 import styles, { layout } from '../style';
 import Button from './Button';
+import axios from 'axios';
 
 const Billing = () => {
   
   const [showTrack, setShowTrack] = useState(false);
   const [targetEmail, setTargetEmail] = useState('');
 
-  const queryEmail = (event) => {
-    setTargetEmail(e.target.value);
-  }
+  
 
   const TrackInfo = () => {
     return (
@@ -18,19 +17,19 @@ const Billing = () => {
     )
   }
 
-  const TrackButton = () => {
-    return (
-      <p className={styles.paragraph}>
-        <div className="h-[60px] w-[100%] grid grid-cols-2 gap-2 content-center mt-4">
-          <input type="text" className={styles.inputField} onChange={queryEmail} placeholder='something@something.com' />
-          <Button text="Track" onClick={Track} />
-        </div>
-      </p>
-    )
+  const queryEmail = (e) => {
+    console.log(e.target.value);
+    setTargetEmail(e.target.value);
   }
 
   const Track = () => {
-    setShowTrack(true);
+    axios.get(`http://localhost:3000/search?email=${targetEmail}`)
+    .then(response => {
+      console.log(response.data);
+      //setShowTrack(true);
+    }).catch(err => {
+      console.log("Unable");
+    });
   }
 
   return (
@@ -48,7 +47,15 @@ const Billing = () => {
         <p className={`${styles.paragraph} max-w-[470px mt-5]`}>
           We store each transaction in our database, so you could keep track of all the transactions you've made over time with our website. 
         </p>
-        { showTrack ? <TrackInfo /> : <TrackButton /> }
+        
+        <p className={styles.paragraph}>
+          <div className="h-[60px] w-[100%] grid grid-cols-2 gap-2 content-center mt-4">
+            <input type="text" className={styles.inputField} onChange={queryEmail} placeholder='something@something.com' />
+            <span className='w-full' onClick={Track}>
+              <Button text="Track" />
+            </span>
+          </div>
+        </p>
       </div>
 
       
