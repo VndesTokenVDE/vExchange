@@ -48,7 +48,7 @@ const [{ chains, connectedChain, settingChain }, setChain] = useSetChain()
   const [chainId, setChainId] = useState(56)
 
   useEffect(() => {
-    setChain({ chainId: 56 })
+    setChain({ chainId: 137 })
     ethersProvider?.getNetwork().then(res => setChainId(res.chainId))
   }, [ethersProvider])
 
@@ -136,12 +136,12 @@ const MY_TOKEN_LIST = [
       "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
     },
     {
-      "name": "BBCat",
-      "address": "0xcb3e4688c4cd90022f74f5c70a775172ecab4d52",
-      "symbol": "CAT",
-      "decimals": 9,
-      "chainId": 56,
-      "logoURI": "https://github.com/dex-guru/assets/blob/main/tokens/56/0xcB3E4688C4cd90022F74f5C70A775172eCaB4D52.png?raw=true"
+      "name": "VNDES",
+      "address": "0xD6ba705DA1713F66925C46EbB9f6A9548c9E4213",
+      "symbol": "VDE",
+      "decimals": 18,
+      "chainId": 137,
+      "logoURI": "https://raw.githubusercontent.com/VndesTokenVDE/vExchange/master/public/vndes.png"
     },
   ]
 
@@ -166,7 +166,7 @@ const MY_TOKEN_LIST = [
        theme={theme}
        tokenList={TOKEN_LIST}
        provider={ethersProvider}
-       defaultTokenOut='0xcb3e4688c4cd90022f74f5c70a775172ecab4d52'
+       defaultTokenOut='0xD6ba705DA1713F66925C46EbB9f6A9548c9E4213'
        feeSetting={
          feeSetting.feeAmount && feeSetting.feeReceiver
            ? feeSetting
