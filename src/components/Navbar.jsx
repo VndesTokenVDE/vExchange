@@ -6,7 +6,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <img src={logo} alt="dExchange" className='w-[124px] h-[32px]' />
+      <img src={logo} alt="dExchange" className='w-[124px]' />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {
