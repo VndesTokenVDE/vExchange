@@ -4,7 +4,7 @@ import { init, useWallets, useConnectWallet,useSetChain } from "@web3-onboard/re
 import injectedModule from "@web3-onboard/injected-wallets"
 import { ethers } from "ethers"
 import walletConnectModule from "@web3-onboard/walletconnect"
-import { Button } from "@mui/material";
+import { Button } from "./Button";
 const injected = injectedModule()
 const wcInitOptions = {
   /**
@@ -177,8 +177,8 @@ const MY_TOKEN_LIST = [
        showDetail={showDetail}
        showRate={showRate}
        title={<div><Button
-         variant="outlined"  onClick={() => (wallet ? disconnect(wallet) : connect())} className="button">
-            {!wallet ? "Connect Wallet" : "Disconnect"}</Button></div>}
+         variant="outlined"  onClick={() => (wallet ? disconnect(wallet) : connect())} className="button" text="{!wallet ? "Connect Wallet" : "Disconnect"}">
+            </Button></div>}
      />
    </div>
   )
