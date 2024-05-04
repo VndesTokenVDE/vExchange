@@ -10,7 +10,7 @@ const Testimonials = () => {
         <h1 className={styles.heading2}>What people are<br className='sm:block hidden' /> saying about us</h1>
         <div className="w-full md:mt-0 mt-6">
           <p className={`${styles.paragraph} text-left max-w-[450px]`}>
-            Exchange <b>USD</b> with <b>PKR</b> in one of the fast and easiest way, right on your fingertips.
+            Exchange <b>USD</b> with <b>VDE</b> in one of the fast and easiest way, right on your fingertips.
           </p>
         </div>
       </div>
