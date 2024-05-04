@@ -19,15 +19,7 @@
 }
 
 .text-gradient {
-  background: radial-gradient(
-    64.18% 64.18% at 71.16% 35.69%,
-    #def9fa 0.89%,
-    #bef3f5 17.23%,
-    #9dedf0 42.04%,
-    #7de7eb 55.12%,
-    #5ce1e6 71.54%,
-    #33bbcf 100%
-  );
+  background: radial-gradient(64.18% 64.18% at 71.16% 35.69%, #fcecba .89%, #ffebb0 17.23%, #fff4d4 42.04%, #f3d4a7 55.12%, #ffd28d .54%, #ffbd59 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -35,17 +27,12 @@
 }
 
 .bg-blue-gradient {
-  background: linear-gradient(
-    157.81deg,
-    #def9fa -43.27%,
-    #bef3f5 -21.24%,
-    #9dedf0 12.19%,
-    #7de7eb 29.82%,
-    #5ce1e6 51.94%,
-    #33bbcf 90.29%
-  );
+  background: linear-gradient(157.81deg, #fff5d7 .89%, #ffebb0 17.23%, #ffeaad 42.04%, #f3d4a7 55.12%, #ffdca6 .54%, #ffbd59 100%);
 }
-
+.text-secondary {
+    --tw-text-opacity: 1;
+    color: #FFC107;
+}
 .bg-black-gradient {
   background: linear-gradient(
     144.39deg,
