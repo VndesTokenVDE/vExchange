@@ -135,7 +135,7 @@ const Exchange = () => {
 		
 		</span>
 		<div className="w-full md:mt-0 mt-6">
-		 <Swap />
+		
 		</div>
 	  </div>
 	</section>
