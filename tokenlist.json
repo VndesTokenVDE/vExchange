@@ -14,6 +14,14 @@
   ],
   "tokens": [
     {
+      "name": "VNDES",
+      "address": "0xD6ba705DA1713F66925C46EbB9f6A9548c9E4213",
+      "symbol": "VDE",
+      "decimals": 18,
+      "chainId": 137,
+      "logoURI": "https://raw.githubusercontent.com/VndesTokenVDE/vExchange/master/public/vndes.png"
+    },
+    {
       "name": "3A Utility Token",
       "address": "0x58c7B2828e7F2B2CaA0cC7fEef242fA3196d03df",
       "symbol": "A3A",
