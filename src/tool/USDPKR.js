@@ -1,4 +1,4 @@
 export const CURRENCY = {
-    USDPKR: 279.72,
+    USDVDE: 0.0001,
     TAX: 40,
 }
