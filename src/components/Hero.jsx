@@ -26,10 +26,10 @@ const Hero = () => {
         </div>
 
         <h1 className='text-white font-poppins font-semibold ss:text-[68px] text-[52px] ss:leading-[100px] leading-[75px]'>
-          Dollar Exchange 
+          VDE Exchange 
         </h1>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Our team of experts uses one of the best backend software, to convert your <b>USD</b> into <b>PKR</b>, We also examine and keep track of all the transctions you've made with our website.
+          Our team of experts uses one of the best backend software, to convert your <b>USD</b> into <b>VDE</b>, We also examine and keep track of all the transctions you've made with our website.
         </p>
       </div>
 
