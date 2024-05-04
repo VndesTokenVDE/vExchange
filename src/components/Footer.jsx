@@ -31,7 +31,7 @@ const Footer = () => {
 
       <div className='w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3f3r45]'>
         <p className='font-poppins font-normal text-center text-[14px] leading-[27px] text-white'>
-          2023 { webConfigs.name }. All Rights Reserved | Powered by <a href="http://waynecrypt.ml" target="_blank" className={`${styles.link}`} >WayneCrypt</a>
+          2023 { webConfigs.name }. All Rights Reserved | Powered by <a href="#" target="_blank" className={`${styles.link}`} >VNDES</a>
         </p>
 
         <div className="flex flex-row md:mt-0 mt-6">
