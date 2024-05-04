@@ -1,7 +1,7 @@
 import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, aliwains  } from "../assets";
 
 export const webConfigs = {
-  name: "dExchange",
+  name: "vExchange",
 };
 
 export const navLinks = [
