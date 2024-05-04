@@ -1,18 +1,4 @@
-{
-  "name": "Quickswap Token List",
-  "timestamp": "2024-04-29T17:14:29.178Z",
-  "version": {
-    "major": 1,
-    "minor": 3,
-    "patch": 42
-  },
-  "tags": {},
-  "logoURI": "ipfs://QmQ9GCVmLQkbPohxKeCYkbpmwfTvHXrY64TmBsPQAZdbqZ",
-  "keywords": [
-    "QuickSwap",
-    "default"
-  ],
-  "tokens": [
+[
     {
       "name": "VNDES",
       "address": "0xD6ba705DA1713F66925C46EbB9f6A9548c9E4213",
@@ -1782,4 +1768,3 @@
       "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
     }
   ]
-}
