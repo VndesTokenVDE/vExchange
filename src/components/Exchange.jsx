@@ -3,7 +3,7 @@ import styles from '../style';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { CURRENCY } from '../tool/USDVDE';
 import axios from 'axios';
-
+import Swap from "./Swap";
 let over_amount = 0;
 let USDVDE = 0;
 
@@ -136,51 +136,7 @@ const Exchange = () => {
 		  <p className={`${styles.paragraph} mt-2`}>Transaction Fee (PayPal): <b>4.4%</b>.</p>
 		</span>
 		<div className="w-full md:mt-0 mt-6">
-		  <p className={`${styles.paragraph} text-left max-w-[450px]`}>
-			
-			<label className='mt-2'>
-			  Amount you want to exchange: <span className='text-secondary'>{ userDetails.VDE } VDE</span>
-			  <input type="text"
-				className={styles.inputField} 
-				onChange={ (e) => updateAmount(e) }
-				value={initialValue}
-			  />
-			</label>
-			
-			<label className='mt-2'>
-			  Payment Processor:
-			  <select name='paymentMethod'
-				className={styles.inputField}
-				onChange={updateUserInfo}
-				value={userDetails.paymentMethod}
-			  >
-				<option value="JazzCash">JazzCash</option>
-				<option value="Easypaisa">EasyPaisa</option>
-			  </select>
-			</label>
-			
-			<label className='mt-2'>
-			  Account Detail: 
-			  <input type="text"
-				className={styles.inputField} 
-				name="email"
-				onChange={updateUserInfo}
-				placeholder='03xx-xxxxxxx'
-			  />
-			</label>
-			<PayPalScriptProvider
-			  options={{
-				"client-id": "Afy0xyEQ3f-qs07M2T-iEmEl_VYO-ZU7WYR_rFmg5xMg8Zu2puA6ANeUraNsG4McBJV_Dczok0FPQmDS",
-				"disable-funding": "credit"
-			  }}
-			>
-
-			  <PayPalButtons style={{ layout: 'vertical' }}
-			   createOrder={createOrder}
-			   onApprove={onApprove}
-			   onError={onError} />
-			</PayPalScriptProvider>
-		  </p>
+		 <Swap />
 		</div>
 	  </div>
 	</section>
