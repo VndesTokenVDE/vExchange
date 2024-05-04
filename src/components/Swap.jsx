@@ -177,8 +177,10 @@ const MY_TOKEN_LIST = [
        showDetail={showDetail}
        showRate={showRate}
        title={<div><Button
-         variant="outlined"  onClick={() => (wallet ? disconnect(wallet) : connect())} className="button" text="{!wallet ? "Connect Wallet" : "Disconnect"}">
-            </Button></div>}
+         variant="outlined"
+                     onClick={() => (wallet ? disconnect(wallet) : connect())} 
+                     className="button" text="{!wallet ? "Connect Wallet" : "Disconnect"}" />
+           </div>}
      />
    </div>
   )
