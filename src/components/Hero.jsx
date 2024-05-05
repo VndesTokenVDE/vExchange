@@ -16,14 +16,14 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-row justify-between items-center w-full">
-          <h3  className='text-white flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100px] leading-[75px]'>The Next Generation <br className='sm:block hidden' /> {" "}</h3>
+          <h3  className='text-white flex-1 font-poppins font-semibold ss:text-[22px] text-[40px] ss:leading-[100px] leading-[32px]'>The Next Generation <br className='sm:block hidden' /> {" "}</h3>
          
 
           <div className="ss:flex hidden md:mr-4 mr-0">
             <GetStarted />
           </div>
         </div>
-         <h1 className='text-white flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100px] leading-[75px]'>
+         <h1 className='text-white flex-2 font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[10px] leading-[32px]'>
             <span className="text-gradient">VNDES Token</span>
           </h1>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
