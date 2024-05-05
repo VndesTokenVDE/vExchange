@@ -16,21 +16,18 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-row justify-between items-center w-full">
-          <h1 className='text-white flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100px] leading-[75px]'>The Next <br className='sm:block hidden' /> {" "}
-            <span className="text-gradient">Generation</span>
-          </h1>
+          <h3  className='text-white flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100px] leading-[75px]'>The Next Generation <br className='sm:block hidden' /> {" "}</h3>
+         
 
           <div className="ss:flex hidden md:mr-4 mr-0">
             <GetStarted />
           </div>
         </div>
-
-        <h1 className='text-white font-poppins font-semibold ss:text-[68px] text-[52px] ss:leading-[100px] leading-[75px]'>
-          VDE Exchange 
-        </h1>
+         <h1 className='text-white flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100px] leading-[75px]'>
+            <span className="text-gradient">VNDES Token</span>
+          </h1>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Our team of experts uses one of the best backend software, to convert your <b>USD</b> into <b>VDE</b>, We also examine and keep track of all the transctions you've made with our website.
-        </p>
+          VNDES is a decentralized finance (DeFi) token that is built on the Polygon blockchain. It is designed to be used as a medium of exchange for goods and services on the e-commerce platform. The VNDES is a peer-to-peer platform that allows users to buy and sell goods and services using VDE.  </p>
       </div>
 
       <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
