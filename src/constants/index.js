@@ -31,16 +31,16 @@ export const features = [
   {
     id: "feature-1",
     icon: star,
-    title: "Exchange Rates",
+    title: "VDE is a utility token",
     content:
-      "We offer one of the best exchange rates between two currencies with low transaction fee",
+      "VNDES COIN will a more attractive investment than many other cryptocurrencies.",
   },
   {
     id: "feature-2",
     icon: shield,
-    title: "100% Secured",
+    title: "100% Committed",
     content:
-      "We take proactive steps make sure your information and transactions are secure.",
+      "We are committed to making VNDES COIN a success, and we are constantly working to improve the VNDES ecosystem.",
   },
   {
     id: "feature-3",
