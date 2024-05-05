@@ -27,7 +27,10 @@ const Business = () => {
         <h2 className={ styles.heading2 }>
           You do the bussiness, <br className='sm:block hidden'/>We'll Handle the money.
         </h2>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>Reasons to consider using our services, we provide one of the securest methodoly to handle your transactions with care.</p>
+        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
+        The future of VNDES COIN is bright.<br className='sm:block hidden'/>
+         As the VNDES ecosystem grows, the value of VNDES COIN is expected to increase.
+        </p>
       
           <a href="/#exchange">
             <Button styles="mt-10" text="Get Started" />
